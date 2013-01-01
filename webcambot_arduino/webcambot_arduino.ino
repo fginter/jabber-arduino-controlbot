@@ -1,14 +1,13 @@
-#include <Stepper.h>
+#include "step_motor.h"
 
-#define STEPS 100
 
-Stepper stepper(STEPS, 10, 11, 12, 13);
+StepMotor stepper(64, 10, 11, 12, 13);
 
 void setup() {
    stepper.setSpeed(30);
 }
 
 void loop() {
-  stepper.step(30);
+  stepper.turn(30);
 }
 
