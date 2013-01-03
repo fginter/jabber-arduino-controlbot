@@ -7,26 +7,54 @@ StepMotor::StepMotor(int gearRatio, int i1, int i2, int i3, int i4) {
   this->i2=i2;
   this->i3=i3;
   this->i4=i4;
+  pinMode(i1,OUTPUT);
+  pinMode(i2,OUTPUT);
+  pinMode(i3,OUTPUT);
+  pinMode(i4,OUTPUT);
   deenergize();
+  setSpeed(60); //1Hz
 };
 
 void StepMotor::setSpeed(int speed) {
+  //Speed is given in RPM
+  //Steps per minute: 8*gearRatio*speed
+  //Steps per second: 8*gearRatio*speed/60
+  //Steps per microsecond: 8*gearRatio*speed/60000000
+  //Delay in microseconds between steps: 60000000/(8*gearRatio*speed)
+  //                                   : 7500000/(gearRatio*speed)
+  unsigned long delay=7500000UL/((unsigned long)gearRatio*(unsigned long)speed);
+  this->stepDelay=(unsigned int) delay;
 };
 
 //it takes 8 * gearRatio steps for a full revolution of the output shaft
-void StepMotor::turn(int steps) {
+void StepMotor::turn(long steps) {
   bool fwd=true;
   if (steps<0) {
       fwd=false;
       steps*=-1;
   }
+  long start=0L;
   while (steps>0) {
     singleStep(fwd);
     steps--;
-    delay(5);
+    if (start) {
+      delayMicroseconds(stepDelay*start);
+      if (steps%30 == 0) {
+        start--;
+      }
+    }
+    else {
+      delayMicroseconds(stepDelay);
+    }
   }
   deenergize();
 };
+
+void StepMotor::turnDegrees(long degs) {
+  //How many steps?
+  long steps=(gearRatio*degs)/45L; //8/360 -> 1/45
+  turn(steps);
+}
 
 void StepMotor::deenergize() {
   digitalWrite(i1, LOW);  
