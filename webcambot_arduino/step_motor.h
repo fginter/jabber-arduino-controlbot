@@ -1,3 +1,6 @@
+#ifndef _step_motor_h_
+#define _step_motor_h_
+
 class StepMotor {
   public:
     int gearRatio, i1, i2, i3, i4;
@@ -12,3 +15,4 @@ class StepMotor {
     void singleStep(bool fwd);
 };
 
+#endif
