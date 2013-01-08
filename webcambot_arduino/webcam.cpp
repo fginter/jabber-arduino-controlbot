@@ -48,7 +48,7 @@ void Webcam::serve() {
           Serial.println("ERR Unknown command;");
         }
         else if (err==WCAM_ERR_CMD_MALFORMED) {
-          Serial.println("ERR Malformed command;");
+          Serial.println(message);
         }
       }
     }
