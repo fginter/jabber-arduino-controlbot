@@ -42,13 +42,13 @@ void Webcam::serve() {
         message[bytesRead]='\0';
         err=react(message);
         if (err==WCAM_ERR_OK) {
-          Serial.println("OK");
+          Serial.println("OK;");
         }
         else if (err==WCAM_ERR_CMD_UNKNOWN) {
-          Serial.println("ERR Unknown command");
+          Serial.println("ERR Unknown command;");
         }
         else if (err==WCAM_ERR_CMD_MALFORMED) {
-          Serial.println("ERR Malformed command");
+          Serial.println("ERR Malformed command;");
         }
       }
     }
