@@ -13,7 +13,8 @@
 class Webcam {
   public:
     StepMotor *hMotor;
-    Webcam(StepMotor *hMotor);
+    StepMotor *vMotor;
+    Webcam(StepMotor *hMotor, StepMotor *vMotor);
     void serve();
     int react(char *cmd);
   

@@ -1,8 +1,9 @@
 #include "step_motor.h"
 #include "webcam.h"
 
-StepMotor stepper(64*8, 10, 11, 12, 13);
-Webcam wCam(&stepper);
+StepMotor stepperH(64*8, 13, 12, 11, 10);
+StepMotor stepperV(64*8, 9, 8, 7, 6);
+Webcam wCam(&stepperH,&stepperV);
 
 void handshake() {
   char message[20];
@@ -23,7 +24,8 @@ void handshake() {
 
 void setup() {
   Serial.begin(9600);
-  stepper.setSpeed(15L);
+  stepperH.setSpeed(3L);
+  stepperV.setSpeed(3L);
   handshake();
 }
 

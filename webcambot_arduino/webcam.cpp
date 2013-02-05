@@ -2,8 +2,9 @@
 #include "step_motor.h"
 #include <Arduino.h>
 
-Webcam::Webcam(StepMotor *hMotor) {
+Webcam::Webcam(StepMotor *hMotor, StepMotor *vMotor) {
   this->hMotor=hMotor;
+  this->vMotor=vMotor;
 }
 
 int Webcam::react(char *message) {
@@ -24,6 +25,7 @@ int Webcam::react(char *message) {
       hMotor->turnDegrees(angle);
       break;
     case 'v':
+      vMotor->turnDegrees(angle);
       break;
     default:
       return WCAM_ERR_CMD_UNKNOWN;
