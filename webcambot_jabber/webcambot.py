@@ -1,4 +1,4 @@
-from jabberbot2 import JabberBot, botcmd
+from jabberbot_local import JabberBot, botcmd
 import datetime
 from serial_comm import SerialComm
 
