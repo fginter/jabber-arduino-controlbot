@@ -1,3 +1,4 @@
+from ..lib import appdirs
 from Tkinter import *
 from arrow_pad import ArrowPad		
 from jabber_client import JabberClient
@@ -15,9 +16,3 @@ class App:
 		
 	def controlButtonPress(self,bName):
 		self.jabberClient.sendMsg(bName)
-
-root = Tk()
-root.title('CamCtrl')
-app = App(root)
-
-root.mainloop()
