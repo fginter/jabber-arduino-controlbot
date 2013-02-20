@@ -15,16 +15,16 @@ class ArrowPad(Canvas):
 
     def populateButtons(self):
         bPlacements={
-			"lll":(-3,0),
-			"ll":(-2,0),
-			"l":(-1,0),
-			"r":(1,0),
-			"rr":(2,0),
-			"rrr":(3,0),
-			"u":(0,-1),
-			"uu":(0,-2),
-			"d":(0,1),
-			"dd":(0,2),
+			"pan 3":(3,0),
+			"pan 2":(2,0),
+			"pan 1":(1,0),
+			"pan -1":(-1,0),
+			"pan -2":(-2,0),
+			"pan -3":(-3,0),
+			"tilt -1":(0,-1),
+			"tilt -2":(0,-2),
+			"tilt 1":(0,1),
+			"tilt 2":(0,2),
                         }
         
         for bName,(xG,yG) in bPlacements.iteritems():
