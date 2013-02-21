@@ -23,7 +23,6 @@ class CfgFile:
 
     def set(self,key,value):
         self.kvDict[key]=value
-        self.write() #I think this is okay if we don't change the config too often
 
     def write(self):
         if not self.fileName:
