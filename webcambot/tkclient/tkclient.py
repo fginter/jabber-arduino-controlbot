@@ -16,8 +16,8 @@ class App:
 		self.optButton.pack()
 		self.f.pack()
 
-		#self.jabberClient=JabberClient()
-		#self.jabberClient.connect()
+		self.jabberClient=JabberClient()
+		self.jabberClient.connect()
 	
 	def optionsButtonPress(self):
 		o=OptionsWindow()
