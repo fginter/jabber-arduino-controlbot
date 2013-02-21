@@ -14,7 +14,7 @@ class CfgFile:
             print >> sys.stderr, "Initializing path:",self.dir
         if not os.path.exists(self.fileName):
             print >> sys.stderr, "Initializing config file:",self.fileName
-            f=open(self.fileName,"wt")
+            f=open(self.fileName,"w")
             f.close()
         self.read()
     
@@ -27,13 +27,13 @@ class CfgFile:
     def write(self):
         if not self.fileName:
             raise ValueError("FileName cannot be empty")
-        f=codecs.open(self.fileName,"wt","utf-8")
+        f=codecs.open(self.fileName,"w","utf-8")
         for k in sorted(self.kvDict):
             print >> f, k,"=",self.kvDict[k]
         f.close()
     
     def read(self):
-        f=codecs.open(self.fileName,"rt","utf-8")
+        f=codecs.open(self.fileName,"r","utf-8")
         for line in f:
             line=line.strip()
             if not line or line.startswith(u"#"):
