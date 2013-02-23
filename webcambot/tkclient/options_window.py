@@ -3,8 +3,12 @@ from ..lib.cfg_file import config
 
 class OptionsWindow (Toplevel):
 
-    def __init__(self,*args,**kwargs):
-        Toplevel.__init__(self,*args,**kwargs)
+    def __init__(self,parent,*args,**kwargs):
+        Toplevel.__init__(self,parent,*args,**kwargs)
+        self.transient(parent)
+        self.parent=parent
+        self.grab_set()
+        self.protocol("WM_DELETE_WINDOW", self.cancel)
         self.title("Options")
 
         self.connFrame=LabelFrame(self)
@@ -51,6 +55,8 @@ class OptionsWindow (Toplevel):
         self.buttonFrame.pack(pady=5)
 
         self.readFromConfig()
+
+        self.wait_window(self)
         
     def fillTextFromConfig(self,entryField,key):
         entryField.delete(0,END)

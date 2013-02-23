@@ -9,9 +9,17 @@ class ArrowPad(Canvas):
     def __init__(self,master,buttonPressCallback=None):
         Canvas.__init__(self,master,height=125,width=175)
         self.recHandles={} #{TK handle:buttonName}
+        self.leds={} #{led name : rectangle ID}
+        self.leds["connected"]=self.create_rectangle(150,110,155,125)
+        self.setSignal("connected","alert")
         self.buttonPressCallback=buttonPressCallback #This method is called with button name upon press
         self.bind("<Button-1>",self.mouseCallback)
         self.populateButtons()
+
+    statusColors={"alert":"red","warning":"yellow","ok":"green"}
+    def setSignal(self,signalName,status):
+        self.itemconfig(self.leds[signalName],fill=ArrowPad.statusColors[status])
+            
 
     def populateButtons(self):
         bPlacements={
