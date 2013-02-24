@@ -1,16 +1,16 @@
 #include "step_motor.h"
 #include "webcam.h"
 
-StepMotor stepperH(64*8, 13, 12, 11, 10);
-StepMotor stepperV(64*8, 9, 8, 7, 6);
+StepMotor stepperV(64*8, 13, 12, 11, 10);
+StepMotor stepperH(64*8, 9, 8, 7, 6);
 Webcam wCam(&stepperH,&stepperV);
 
 void handshake() {
-  char message[20];
+  char message[60];
   int readLen=0;
   while (true) {
     Serial.println("webcambot waiting;");
-    readLen=Serial.readBytesUntil(';',message,19);
+    readLen=Serial.readBytesUntil(';',message,59);
     if (readLen > 0) {
       message[readLen]='\0';
       if (!strcmp(message,"howdy")) {

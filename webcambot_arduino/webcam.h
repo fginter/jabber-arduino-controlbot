@@ -4,7 +4,7 @@
 #include "step_motor.h"
 
 //Maximal length of single command
-#define BUFFLEN 25
+#define BUFFLEN 60
 
 #define WCAM_ERR_OK 0
 #define WCAM_ERR_CMD_UNKNOWN 2

@@ -18,11 +18,11 @@ class WebcamBot(JabberBot):
     def pan(self, mess, angle):
         """Pans given angle. Negative left, positive right."""
         print "pan"
-        return self.serialComm.sendMsg("h %d"%int(angle))
+        return self.serialComm.sendAndWaitForReply("h %d"%int(angle))
 
     @botcmd
     def tilt(self, mess, angle):
         """Pans given angle. Negative down, positive up."""
         print "TILT"
-        return self.serialComm.sendMsg("v %d"%int(angle))
+        return self.serialComm.sendAndWaitForReply("v %d"%int(angle))
 
