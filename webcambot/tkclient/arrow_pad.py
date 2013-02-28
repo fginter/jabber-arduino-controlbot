@@ -11,7 +11,9 @@ class ArrowPad(Canvas):
         self.recHandles={} #{TK handle:buttonName}
         self.leds={} #{led name : rectangle ID}
         self.leds["connected"]=self.create_rectangle(150,110,155,125)
+        self.leds["remoteresponse"]=self.create_rectangle(160,110,165,125)
         self.setSignal("connected","alert")
+        self.setSignal("remoteresponse","alert")
         self.buttonPressCallback=buttonPressCallback #This method is called with button name upon press
         self.bind("<Button-1>",self.mouseCallback)
         self.populateButtons()

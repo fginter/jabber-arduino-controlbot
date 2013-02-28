@@ -30,7 +30,7 @@ class App:
 		self.signalConnectionStatus()
 	
 	def checkConfig(self):
-		"""Checks whether username and password are present in the config"""
+		"""Checks whether username, password and bot address are present in the config"""
 		return config.get("tkclient_username") and config.get("tkclient_password") and config.get("bot_username")
 
 	def optionsButtonPress(self):
